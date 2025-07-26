@@ -1,0 +1,18 @@
+apiVersion: managedkafka.gcp.upbound.io/v1beta1
+kind: Topic
+metadata:
+  name: example-topic
+  labels:
+    testing.upbound.io/example-name: kafka
+spec:
+  forProvider:
+    clusterRef:
+      name: example-kafka-cluster
+    location: us-central1
+    partitionCount: 3
+    replicationFactor: 3
+    configs:
+      retention.ms: "604800000"
+      compression.type: "producer"
+  providerConfigRef:
+    name: default

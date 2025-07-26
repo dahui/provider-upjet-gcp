@@ -1,0 +1,25 @@
+apiVersion: managedkafka.gcp.upbound.io/v1beta1
+kind: ACL
+metadata:
+  name: example-acl
+  labels:
+    testing.upbound.io/example-name: kafka
+spec:
+  forProvider:
+    clusterRef:
+      name: example-kafka-cluster
+    location: us-central1
+    resourceType: TOPIC
+    resourceName: example-topic
+    patternType: LITERAL
+    aclEntries:
+    - principal: "User:kafka-user@example.com"
+      host: "*"
+      operation: READ
+      permissionType: ALLOW
+    - principal: "User:kafka-producer@example.com"
+      host: "*"
+      operation: WRITE
+      permissionType: ALLOW
+  providerConfigRef:
+    name: default

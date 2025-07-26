@@ -35,6 +35,7 @@ import (
 	"github.com/upbound/provider-gcp/config/identityplatform"
 	"github.com/upbound/provider-gcp/config/kms"
 	"github.com/upbound/provider-gcp/config/logging"
+	"github.com/upbound/provider-gcp/config/managedkafka"
 	"github.com/upbound/provider-gcp/config/monitoring"
 	"github.com/upbound/provider-gcp/config/networksecurity"
 	"github.com/upbound/provider-gcp/config/notebooks"
@@ -105,4 +106,5 @@ func init() {
 	ProviderConfiguration.AddConfig(healthcare.Configure)
 	ProviderConfiguration.AddConfig(gkehub.Configure)
 	ProviderConfiguration.AddConfig(monitoring.Configure)
+	ProviderConfiguration.AddConfig(managedkafka.Configure)
 }

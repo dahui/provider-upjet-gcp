@@ -1,0 +1,17 @@
+apiVersion: managedkafka.gcp.upbound.io/v1beta1
+kind: Cluster
+metadata:
+  name: example-kafka-cluster
+  labels:
+    testing.upbound.io/example-name: kafka
+spec:
+  forProvider:
+    location: us-central1
+    gceCluster:
+    - subnetRef:
+        name: example-subnet
+    capacityConfig:
+    - vcpuCount: 4
+      memoryBytes: 17179869184
+  providerConfigRef:
+    name: default

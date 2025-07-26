@@ -649,6 +649,15 @@ var terraformPluginSDKExternalNameConfigs = map[string]config.ExternalName{
 	// Imported by using the following projects/{{project}}/locations/{{location}}/urlLists/{{name}}
 	"google_network_security_url_lists": config.TemplatedStringAsIdentifier("name", "projects/{{ if .parameters.project }}{{ .parameters.project }}{{ else }}{{ .setup.configuration.project }}{{ end }}/locations/{{ .parameters.location }}/urlLists/{{ .external_name }}"),
 
+	// managed kafka
+	//
+	// Imported by using the following projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/acls/{{acl_id}}
+	"google_managed_kafka_acl": config.TemplatedStringAsIdentifier("acl_id", "projects/{{ .setup.configuration.project }}/locations/{{ .parameters.location }}/clusters/{{ .parameters.cluster }}/acls/{{ .parameters.acl_id }}"),
+	// Imported by using projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
+	"google_managed_kafka_cluster": config.TemplatedStringAsIdentifier("name", "projects/{{ .setup.configuration.project }}/locations/{{ .parameters.location }}/clusters/{{ .external_name }}"),
+	// Imported by using projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/topics/{{topic_id}}
+	"google_managed_kafka_topic": config.TemplatedStringAsIdentifier("name", "projects/{{ .setup.configuration.project }}/locations/{{ .parameters.location }}/clusters/{{ .parameters.cluster }}/topics/{{ .external_name }}"),
+
 	// mlengine
 	//
 	// Model can be imported using Name

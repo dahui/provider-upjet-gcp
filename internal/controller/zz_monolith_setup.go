@@ -296,6 +296,9 @@ import (
 	projectbucketconfig "github.com/upbound/provider-gcp/internal/controller/logging/projectbucketconfig"
 	projectexclusion "github.com/upbound/provider-gcp/internal/controller/logging/projectexclusion"
 	projectsink "github.com/upbound/provider-gcp/internal/controller/logging/projectsink"
+	acl "github.com/upbound/provider-gcp/internal/controller/managedkafka/acl"
+	clustermanagedkafka "github.com/upbound/provider-gcp/internal/controller/managedkafka/cluster"
+	topic "github.com/upbound/provider-gcp/internal/controller/managedkafka/topic"
 	instancememcache "github.com/upbound/provider-gcp/internal/controller/memcache/instance"
 	model "github.com/upbound/provider-gcp/internal/controller/mlengine/model"
 	alertpolicy "github.com/upbound/provider-gcp/internal/controller/monitoring/alertpolicy"
@@ -339,7 +342,7 @@ import (
 	schema "github.com/upbound/provider-gcp/internal/controller/pubsub/schema"
 	subscription "github.com/upbound/provider-gcp/internal/controller/pubsub/subscription"
 	subscriptioniammember "github.com/upbound/provider-gcp/internal/controller/pubsub/subscriptioniammember"
-	topic "github.com/upbound/provider-gcp/internal/controller/pubsub/topic"
+	topicpubsub "github.com/upbound/provider-gcp/internal/controller/pubsub/topic"
 	topiciammember "github.com/upbound/provider-gcp/internal/controller/pubsub/topiciammember"
 	clusterredis "github.com/upbound/provider-gcp/internal/controller/redis/cluster"
 	instanceredis "github.com/upbound/provider-gcp/internal/controller/redis/instance"
@@ -675,6 +678,9 @@ func Setup_monolith(mgr ctrl.Manager, o controller.Options) error {
 		projectbucketconfig.Setup,
 		projectexclusion.Setup,
 		projectsink.Setup,
+		acl.Setup,
+		clustermanagedkafka.Setup,
+		topic.Setup,
 		instancememcache.Setup,
 		model.Setup,
 		alertpolicy.Setup,
@@ -718,7 +724,7 @@ func Setup_monolith(mgr ctrl.Manager, o controller.Options) error {
 		schema.Setup,
 		subscription.Setup,
 		subscriptioniammember.Setup,
-		topic.Setup,
+		topicpubsub.Setup,
 		topiciammember.Setup,
 		clusterredis.Setup,
 		instanceredis.Setup,
